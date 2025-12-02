@@ -1,5 +1,5 @@
 import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
-import { instructorsSeed, sessionsSeed } from './data/training-data';
+import { sessionsSeed } from './data/training-data';
 import {
   EnrollParticipantPayload,
   Enrollment,
@@ -9,8 +9,6 @@ import {
 
 @Injectable()
 export class AppService {
-  private readonly instructors: Instructor[] = instructorsSeed;
-
   private readonly sessions: TrainingSession[] = sessionsSeed;
 
 

@@ -1,11 +1,13 @@
 import { FormEvent } from 'react';
-import { EnrollmentFormValues } from '../hooks/useEnrollment';
 import { TrainingSession } from '../types';
 import { formatDateTime } from '../utils/format';
+import { EnrollmentPayload } from '../utils/api';
 import styles from '../app.module.css';
 import { Metric } from './Metric';
 import { TextField } from './TextField';
 import { RosterTable } from './RosterTable';
+
+export interface EnrollmentFormValues extends EnrollmentPayload {}
 
 interface EnrollmentManagerProps {
   session: TrainingSession | null;

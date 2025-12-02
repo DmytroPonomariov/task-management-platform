@@ -1,7 +1,6 @@
 import {
   Enrollment,
   Instructor,
-  InstructorDashboard,
   TrainingSession,
 } from '../types';
 
@@ -29,6 +28,11 @@ async function fetchJson<T>(path: string, options?: RequestInit): Promise<T> {
   }
 
   return body as T;
+}
+
+export interface EnrollmentPayload {
+  participantName: string;
+  participantEmail: string;
 }
 
 export const apiClient = {

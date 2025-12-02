@@ -1,28 +1,4 @@
-import { Instructor, TrainingSession } from '../training.types';
-
-export const instructorsSeed: Instructor[] = [
-  {
-    id: 'inst-ari',
-    name: 'Ari McConnell',
-    email: 'ari@nextworklabs.com',
-    focusAreas: ['Leadership', 'Remote Collaboration'],
-    bio: '11-year facilitator specializing in hybrid leadership labs.',
-  },
-  {
-    id: 'inst-lena',
-    name: 'Lena Dawkins',
-    email: 'lena@crewspark.org',
-    focusAreas: ['Product Discovery', 'Coaching'],
-    bio: 'Former product director who now coaches early-career leads.',
-  },
-  {
-    id: 'inst-cho',
-    name: 'Dr. Kim Cho',
-    email: 'kim@neurocoach.io',
-    focusAreas: ['Psychological Safety', 'Communication'],
-    bio: 'Organizational psychologist focused on high-trust teams.',
-  },
-];
+import { TrainingSession } from '../training.types';
 
 export const sessionsSeed: TrainingSession[] = [
   {
