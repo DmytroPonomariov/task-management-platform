@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "api": "nx serve api",
-    "web": "nx serve web"
+    "web": "nx serve web",
+    "test:web": "vitest run -c web/vite.config.mts"
   },
   "private": true,
   "dependencies": {
