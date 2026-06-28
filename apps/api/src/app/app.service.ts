@@ -295,29 +295,34 @@ TaskFlow System
     console.log(emailBody);
     console.log(`==========================================\n`);
 
-    try {
-      // Use eval('require') to bypass Webpack compile-time bundling for optional nodemailer dependency
-      const nodemailer = eval('require')('nodemailer');
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || 'smtp.mailtrap.io',
-        port: parseInt(process.env.SMTP_PORT || '2525'),
-        auth: {
-          user: process.env.SMTP_USER || '',
-          pass: process.env.SMTP_PASS || '',
-        },
-      });
+    const hasSmtpConfig = process.env.SMTP_USER && process.env.SMTP_PASS;
 
-      if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (hasSmtpConfig) {
+      try {
+        // Use eval('require') to bypass Webpack compile-time bundling for optional nodemailer dependency
+        const nodemailer = eval('require')('nodemailer');
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST || 'smtp.mailtrap.io',
+          port: parseInt(process.env.SMTP_PORT || '2525'),
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+        });
+
         await transporter.sendMail({
           from: '"TaskFlow" <no-reply@taskflow.dev>',
           to: email,
           subject: 'Shared Task List',
           text: emailBody,
         });
-        return { success: true, message: 'Email sent successfully via SMTP' };
+        return { success: true, message: 'Email sent successfully' };
+      } catch (error) {
+        const errMsg = error instanceof Error ? error.message : String(error);
+        console.warn(`SMTP is configured, but email sending failed: ${errMsg}`);
       }
-    } catch (error) {
-      console.warn('Nodemailer dynamic load failed or SMTP config omitted. Email logged to console.');
+    } else {
+      console.log('SMTP config omitted. Email logged to console.');
     }
 
     return { success: true, message: 'Email logged to terminal console (mocked)' };

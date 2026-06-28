@@ -5,6 +5,10 @@
   "scripts": {
     "api": "nx serve api",
     "web": "nx serve web",
+    "build": "nx run-many -t build",
+    "build:api": "nx build api",
+    "build:web": "nx build web",
+    "start:api": "node dist/apps/api/main.js",
     "test:web": "vitest run -c web/vite.config.mts"
   },
   "private": true,
@@ -13,6 +17,7 @@
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "axios": "^1.6.0",
+    "nodemailer": "^9.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "6.29.0",

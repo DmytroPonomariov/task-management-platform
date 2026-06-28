@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global resets to ensure border-box sizing and remove default browser margins */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #0a0f1d; /* Matches the dark background theme */
+}

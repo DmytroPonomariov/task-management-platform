@@ -13,7 +13,12 @@ import { Category, Task, TaskStatus } from './task.types';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
+
+  @Get('healthz')
+  health() {
+    return { status: 'ok' };
+  }
 
   @Get()
   getWelcome(): { message: string } {

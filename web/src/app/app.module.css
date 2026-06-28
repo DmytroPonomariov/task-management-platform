@@ -241,7 +241,7 @@
   background: rgba(15, 23, 42, 0.45);
   border: 1px solid var(--border-color);
   border-radius: 1.25rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -333,7 +333,7 @@
 /* Tasks Grid */
 .tasksGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1.25rem;
 }
 
@@ -669,13 +669,15 @@ textarea.formInput {
     gap: 1.5rem;
   }
 
-  .sidebar {
+  .sidebar,
+  .mainContent {
     width: 100%;
   }
 
   .toolbar {
     flex-direction: column;
     align-items: stretch;
+    padding: 1.5rem;
   }
 
   .searchWrapper {
@@ -690,10 +692,37 @@ textarea.formInput {
 
   .statusTabs {
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .statusTab {
     flex: 1;
     text-align: center;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskMeta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .statusDropdown {
+    width: 100%;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    width: calc(100% - 2rem);
+    margin: 1rem;
   }
 }
